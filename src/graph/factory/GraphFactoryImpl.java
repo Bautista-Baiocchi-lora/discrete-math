@@ -5,11 +5,15 @@ import graph.*;
 public class GraphFactoryImpl<T> implements GraphFactory<T> {
     @Override
     public Graph<T> createFromType(GraphType type) {
-        return switch (type) {
-            case ADJACENCY_MATRIX -> new AdjacencyMatrixGraphImpl<>();
-            case ADJACENCY_LIST -> new AdjacencyListGraphImpl<>();
-            case EDGE_ARRAY -> new EdgeArrayGraphImpl<>();
-        };
+        switch (type) {
+            case ADJACENCY_MATRIX:
+                return new AdjacencyMatrixGraphImpl<>();
+            case ADJACENCY_LIST:
+                return new AdjacencyListGraphImpl<>();
+            case EDGE_ARRAY:
+            default:
+                return new EdgeArrayGraphImpl<>();
+        }
     }
 
     //    Returns a random graph
@@ -17,7 +21,6 @@ public class GraphFactoryImpl<T> implements GraphFactory<T> {
     public Graph<T> getGraph() {
 //        return new EdgeArrayGraphImpl<>();
 //        return new AdjacencyMatrixGraphImpl<>();
-//        return new AdjacencyListGraphImpl<>();
-        throw new UnsupportedOperationException("TODO: replace with one graph");
+        return new AdjacencyListGraphImpl<>();
     }
 }
