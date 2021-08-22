@@ -35,7 +35,13 @@ public class Tp1Impl<T> implements Tp1<T> {
 
     @Override
     public boolean exercise_d(Graph<T> graph, T vertex) {
-        return graph.getAdjacencyList(vertex).isEmpty();
+        List<T> vertexes = graph.getVertexes();
+        for (T temp : vertexes) {
+            if (graph.hasEdge(vertex, temp)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
