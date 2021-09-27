@@ -181,9 +181,25 @@ public class Tp2Impl<T> implements Tp2<T> {
 
     @Override
     public boolean exercise_j(Graph<T> g1, Graph<T> g2) {
-        List<T> g1Vertexes = g1.getVertexes();
-        for (T g1Vertex : g1Vertexes)
-            if (!g2.hasVertex(g1Vertex)) return false;
+        if(g1.order()!=g2.order()) {
+            return false;
+        }
+
+        List<T> g1Vs = g1.getVertexes();
+        List<T> g2Vs = g2.getVertexes();
+
+        if(!g1Vs.containsAll(g2Vs)) {
+            return false;
+        }
+
+        for (int k = 0; k < g2Vs.size() ; k++) {
+            List<T> adys = g2.getAdjacencyList(g2Vs.get(k));
+            for (int n = 0; n < adys.size(); n++) {
+                if (!g1.hasEdge(g2Vs.get(k),adys.get(n))) {
+                    return false;
+                }
+            }
+        }
         return true;
     }
 
