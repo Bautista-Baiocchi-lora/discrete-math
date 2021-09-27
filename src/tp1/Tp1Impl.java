@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-// TODO: implement
 public class Tp1Impl<T> implements Tp1<T> {
     @Override
     public void exercise_a(Graph<T> graph) {
